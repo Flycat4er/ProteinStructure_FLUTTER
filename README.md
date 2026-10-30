@@ -2,13 +2,11 @@
 
 | WebApp |
 | :---: |
-|<img width="700" height="450" alt="web" src="https://github.com/user-attachments/assets/9d76cbed-da5d-464a-be9a-50efb56852fa" />
-|
+|<img width="700" height="450" alt="web" src="https://github.com/user-attachments/assets/9d76cbed-da5d-464a-be9a-50efb56852fa" />|
 
 | DesktopApp |
 | :---: |
-|<img width="640" height="375" alt="desk flutter" src="https://github.com/user-attachments/assets/836512e0-7b16-4d90-bfbe-42677e325f48" />
-|
+|<img width="640" height="375" alt="desk flutter" src="https://github.com/user-attachments/assets/836512e0-7b16-4d90-bfbe-42677e325f48" />|
 
 | AndroidApp |
 | :---: |
