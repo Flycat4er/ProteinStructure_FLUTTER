@@ -2,14 +2,16 @@
 
 | WebApp |
 | :---: |
-|<img width="700" height="480" alt="web-" src="<img width="1280" height="700" alt="web" src="https://github.com/user-attachments/assets/bc4babe4-4e68-4f1c-84e8-f7623528d22b" />|
+|<img width="700" height="450" alt="web" src="https://github.com/user-attachments/assets/9d76cbed-da5d-464a-be9a-50efb56852fa" />
+|
 
 | DesktopApp |
 | :---: |
-|<img width="640" height="400" alt="desctop-app" src=<img width="1280" height="700" alt="desk flutter" src="https://github.com/user-attachments/assets/d21a61fb-4d39-47a7-9f13-aecbcc77f50a" />|
+|<img width="640" height="375" alt="desk flutter" src="https://github.com/user-attachments/assets/836512e0-7b16-4d90-bfbe-42677e325f48" />
+|
 
 | AndroidApp |
 | :---: |
-|<img width="445" height="754" alt="android-app" src="https://github.com/user-attachments/assets/8a3b73ac-9d09-4111-b9d1-59b3834285fe" />|
+|<img width="380" height="654" alt="android vid (1) (1)" src="https://github.com/user-attachments/assets/cff3817a-8428-4048-bb9f-c67b629be475" />|
 
 
