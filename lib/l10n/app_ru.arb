@@ -1,0 +1,69 @@
+{
+  "@@locale": "ru",
+  "appTitle": "Структуры белков",
+  "@appTitle": {
+    "description": "Заголовок в шапке и во вкладке браузера"
+  },
+  "searchHint": "Поиск по ID или названию",
+  "actionClearSearch": "Очистить поиск",
+  "actionToggleTheme": "Переключить тему",
+  "actionToggleLocale": "Сменить язык",
+  "actionBack": "Назад",
+  "sectionGeneral": "Общая информация",
+  "sectionStructure": "Параметры структуры",
+  "sectionAuthors": "Авторы и публикация",
+  "sectionRelated": "Связанные структуры",
+  "labelPdbId": "PDB ID",
+  "labelOrganism": "Организм",
+  "labelMethod": "Метод",
+  "labelResolution": "Разрешение",
+  "labelWeight": "Мол. масса",
+  "labelResidues": "Остатки",
+  "labelReleaseDate": "Дата релиза",
+  "labelClassification": "Классификация",
+  "resolutionFormat": "{resolution} Å",
+  "@resolutionFormat": {
+    "placeholders": {
+      "resolution": {
+        "type": "String"
+      }
+    }
+  },
+  "resolutionNa": "Н/Д (ЯМР)",
+  "weightFormat": "{weight} кДа",
+  "@weightFormat": {
+    "placeholders": {
+      "weight": {
+        "type": "String"
+      }
+    }
+  },
+  "residuesFormat": "{residues} а.о.",
+  "@residuesFormat": {
+    "placeholders": {
+      "residues": {
+        "type": "String"
+      }
+    }
+  },
+  "emptySearchTitle": "Ничего не найдено",
+  "emptySearchDesc": "Попробуйте изменить поисковый запрос или PDB ID",
+  "detailNotFound": "Записи «{id}» в каталоге нет",
+  "@detailNotFound": {
+    "description": "ID из адресной строки не нашёлся",
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "pageNotFound": "Такой страницы нет",
+  "@pageNotFound": {
+    "description": "Адрес, которого нет среди маршрутов"
+  },
+  "methodXray": "Рентгеноструктурный анализ",
+  "methodEm": "Криоэлектронная микроскопия",
+  "methodNmr": "ЯМР-спектроскопия",
+  "methodNeutron": "Нейтронография",
+  "methodOther": "Другой метод"
+}
