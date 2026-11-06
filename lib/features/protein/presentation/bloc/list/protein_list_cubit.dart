@@ -3,20 +3,22 @@ import 'package:protein_structure/features/protein/domain/i_protein_repository.d
 import 'package:protein_structure/features/protein/presentation/bloc/list/protein_list_state.dart';
 
 class ProteinListCubit extends Cubit<ProteinListState> {
-  ProteinListCubit(this._repository) : super(const ProteinListState());
+  ProteinListCubit(this._repository) : super(const ProteinListLoading());
 
   final IProteinRepository _repository;
 
   Future<void> load() async {
+    if (state is! ProteinListLoading) {
+      emit(ProteinListLoading(query: state.query));
+    }
     final items = await _repository.getProteins();
     if (isClosed) return;
-    emit(state.copyWith(items: items));
+    emit(ProteinListLoaded(query: state.query, items: items));
   }
 
   Future<void> search(String query) async {
-    emit(state.copyWith(query: query));
     final items = await _repository.searchProteins(query);
     if (isClosed) return;
-    emit(state.copyWith(items: items));
+    emit(ProteinListLoaded(query: query, items: items));
   }
 }
