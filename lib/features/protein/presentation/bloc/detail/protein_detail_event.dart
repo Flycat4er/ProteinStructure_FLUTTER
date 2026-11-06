@@ -1,9 +1,13 @@
 sealed class ProteinDetailEvent {
-  const ProteinDetailEvent();
+  const ProteinDetailEvent(this.id);
+
+  final String id;
 }
 
 final class ProteinDetailOpened extends ProteinDetailEvent {
-  const ProteinDetailOpened(this.id);
+  const ProteinDetailOpened(super.id);
+}
 
-  final String id;
+final class ProteinDetailRetried extends ProteinDetailEvent {
+  const ProteinDetailRetried(super.id);
 }

@@ -5,22 +5,28 @@ import 'package:protein_structure/features/protein/presentation/bloc/detail/prot
 
 class ProteinDetailBloc extends Bloc<ProteinDetailEvent, ProteinDetailState> {
   ProteinDetailBloc(this._repository) : super(const ProteinDetailLoading()) {
-    on<ProteinDetailOpened>(_onOpened);
+    on<ProteinDetailOpened>(_onLoadRequested);
+    on<ProteinDetailRetried>(_onLoadRequested);
   }
 
   final IProteinRepository _repository;
 
-  Future<void> _onOpened(
-    ProteinDetailOpened event,
+  Future<void> _onLoadRequested(
+    ProteinDetailEvent event,
     Emitter<ProteinDetailState> emit,
   ) async {
-    final protein = await _repository.getProtein(event.id);
-    if (protein == null) {
-      emit(ProteinDetailNotFound(event.id));
-      return;
-    }
+    emit(const ProteinDetailLoading());
+    try {
+      final protein = await _repository.getProtein(event.id);
+      if (protein == null) {
+        emit(ProteinDetailNotFound(event.id));
+        return;
+      }
 
-    final related = await _repository.getProteinsByIds(protein.relatedIds);
-    emit(ProteinDetailLoaded(protein, related: related));
+      final related = await _repository.getProteinsByIds(protein.relatedIds);
+      emit(ProteinDetailLoaded(protein, related: related));
+    } catch (error) {
+      emit(ProteinDetailFailure(event.id, error));
+    }
   }
 }

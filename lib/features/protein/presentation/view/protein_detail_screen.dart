@@ -40,6 +40,28 @@ class ProteinDetailScreen extends StatelessWidget {
                 style: Theme.of(context).textTheme.titleMedium,
               ),
             ),
+            ProteinDetailFailure(:final id) => Center(
+              child: Padding(
+                padding: const EdgeInsets.all(24),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      AppLocalizations.of(context).errorLoad,
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.titleMedium,
+                    ),
+                    const SizedBox(height: 16),
+                    FilledButton.tonal(
+                      onPressed: () => context.read<ProteinDetailBloc>().add(
+                            ProteinDetailRetried(id),
+                          ),
+                      child: Text(AppLocalizations.of(context).actionRetry),
+                    ),
+                  ],
+                ),
+              ),
+            ),
             ProteinDetailLoaded(:final protein, :final related) =>
               _DetailContent(protein: protein, related: related),
           },

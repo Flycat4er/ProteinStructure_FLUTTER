@@ -110,4 +110,10 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get methodOther => 'Другой метод';
+
+  @override
+  String get errorLoad => 'Не удалось загрузить данные';
+
+  @override
+  String get actionRetry => 'Повторить';
 }

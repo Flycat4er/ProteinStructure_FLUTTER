@@ -109,4 +109,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get methodOther => 'Other Method';
+
+  @override
+  String get errorLoad => 'Failed to load data';
+
+  @override
+  String get actionRetry => 'Retry';
 }

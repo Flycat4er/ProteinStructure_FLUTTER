@@ -283,6 +283,18 @@ abstract class AppLocalizations {
   /// In ru, this message translates to:
   /// **'Другой метод'**
   String get methodOther;
+
+  /// No description provided for @errorLoad.
+  ///
+  /// In ru, this message translates to:
+  /// **'Не удалось загрузить данные'**
+  String get errorLoad;
+
+  /// No description provided for @actionRetry.
+  ///
+  /// In ru, this message translates to:
+  /// **'Повторить'**
+  String get actionRetry;
 }
 
 class _AppLocalizationsDelegate

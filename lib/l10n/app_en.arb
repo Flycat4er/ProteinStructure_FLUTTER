@@ -30,5 +30,7 @@
   "methodEm": "Cryo-EM",
   "methodNmr": "Solution NMR",
   "methodNeutron": "Neutron Diffraction",
-  "methodOther": "Other Method"
+  "methodOther": "Other Method",
+  "errorLoad": "Failed to load data",
+  "actionRetry": "Retry"
 }

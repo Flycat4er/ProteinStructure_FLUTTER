@@ -23,3 +23,10 @@ final class ProteinDetailNotFound extends ProteinDetailState {
 
   final String id;
 }
+
+final class ProteinDetailFailure extends ProteinDetailState {
+  const ProteinDetailFailure(this.id, [this.error]);
+
+  final String id;
+  final Object? error;
+}
