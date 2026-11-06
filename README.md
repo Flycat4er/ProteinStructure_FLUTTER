@@ -1,17 +1,15 @@
 # protein_structure
 
-A new Flutter project.
+| WebApp |
+| :---: |
+|<img width="700" height="450" alt="web" src="https://github.com/user-attachments/assets/9d76cbed-da5d-464a-be9a-50efb56852fa" />|
 
-## Getting Started
+| DesktopApp |
+| :---: |
+|<img width="640" height="375" alt="desk flutter" src="https://github.com/user-attachments/assets/836512e0-7b16-4d90-bfbe-42677e325f48" />|
 
-This project is a starting point for a Flutter application.
+| AndroidApp |
+| :---: |
+|<img width="380" height="654" alt="android vid (1) (1)" src="https://github.com/user-attachments/assets/cff3817a-8428-4048-bb9f-c67b629be475" />|
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
