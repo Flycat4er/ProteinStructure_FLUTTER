@@ -7,18 +7,17 @@ class ProteinListCubit extends Cubit<ProteinListState> {
 
   final IProteinRepository _repository;
 
-  Future<void> load() async {
-    if (state is! ProteinListLoading) {
-      emit(ProteinListLoading(query: state.query));
-    }
-    final items = await _repository.getProteins();
-    if (isClosed) return;
-    emit(ProteinListLoaded(query: state.query, items: items));
-  }
+  Future<void> load() => _load('');
 
-  Future<void> search(String query) async {
-    final items = await _repository.searchProteins(query);
-    if (isClosed) return;
+  Future<void> search(String query) => _load(query);
+
+  Future<void> _load(String query) async {
+    emit(ProteinListLoading(query: query));
+    final trimmed = query.trim();
+    final items = trimmed.isEmpty
+        ? await _repository.getProteins()
+        : await _repository.searchProteins(trimmed);
+    if (isClosed || state.query != query) return;
     emit(ProteinListLoaded(query: query, items: items));
   }
 }
