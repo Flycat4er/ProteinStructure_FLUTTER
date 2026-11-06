@@ -85,8 +85,6 @@ class _DetailContent extends StatelessWidget {
     final theme = Theme.of(context);
     final l10n = AppLocalizations.of(context);
 
-    final otherRelated = related.where((r) => r.id != protein.id).toList();
-
     return SingleChildScrollView(
       padding: const EdgeInsets.all(20),
       child: Center(
@@ -166,10 +164,10 @@ class _DetailContent extends StatelessWidget {
                   ),
                 ],
               ],
-              if (otherRelated.isNotEmpty) ...[
+              if (related.isNotEmpty) ...[
                 SectionHeader(title: l10n.sectionRelated),
                 const SizedBox(height: 8),
-                for (final relatedProtein in otherRelated) ...[
+                for (final relatedProtein in related) ...[
                   ProteinCard(protein: relatedProtein),
                   const SizedBox(height: 10),
                 ],

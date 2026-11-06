@@ -16,7 +16,7 @@ const List<ProteinModel> mockProteins = [
     releaseDate: '1984-07-17',
     authors: ['Fermi, G.', 'Perutz, M.F.', 'Shaanan, B.', 'Ceska, R.'],
     citationTitle: 'The crystal structure of human deoxyhaemoglobin at 1.74 A resolution',
-    relatedIds: ['4HHB', '1HHO', '2HHB', '1MBO'],
+    relatedIds: ['1HHO', '2HHB', '1MBO'],
   ),
   ProteinModel(
     id: '1HHO',
@@ -32,7 +32,7 @@ const List<ProteinModel> mockProteins = [
     releaseDate: '1983-09-27',
     authors: ['Shaanan, B.'],
     citationTitle: 'Structure of human oxyhaemoglobin at 2.1 A resolution',
-    relatedIds: ['4HHB', '1HHO', '2HHB'],
+    relatedIds: ['4HHB', '2HHB'],
   ),
   ProteinModel(
     id: '6LU7',
@@ -48,7 +48,7 @@ const List<ProteinModel> mockProteins = [
     releaseDate: '2020-02-05',
     authors: ['Jin, Z.', 'Du, X.', 'Xu, Y.', 'Deng, Y.', 'Liu, M.', 'Zhao, Y.'],
     citationTitle: 'Structure of M(pro) from SARS-CoV-2 and discovery of its inhibitors',
-    relatedIds: ['6LU7', '7KRR'],
+    relatedIds: ['7KRR'],
   ),
   ProteinModel(
     id: '1EMA',
@@ -64,7 +64,7 @@ const List<ProteinModel> mockProteins = [
     releaseDate: '1997-01-22',
     authors: ['Ormo, M.', 'Cubitt, A.B.', 'Kallio, K.', 'Gross, L.A.', 'Tsien, R.Y.', 'Remington, S.J.'],
     citationTitle: 'Crystal structure of the Aequorea victoria green fluorescent protein',
-    relatedIds: ['1EMA'],
+    relatedIds: [],
   ),
   ProteinModel(
     id: '1TIM',
@@ -80,7 +80,7 @@ const List<ProteinModel> mockProteins = [
     releaseDate: '1975-06-16',
     authors: ['Banner, D.W.', 'Bloomer, A.C.', 'Petsko, G.A.', 'Phillips, D.C.'],
     citationTitle: 'Structure of chicken muscle triose phosphate isomerase determined crystallographically',
-    relatedIds: ['1TIM'],
+    relatedIds: [],
   ),
   ProteinModel(
     id: '1MBO',
@@ -96,7 +96,7 @@ const List<ProteinModel> mockProteins = [
     releaseDate: '1980-04-14',
     authors: ['Phillips, S.E.V.'],
     citationTitle: 'Structure and refinement of oxymyoglobin at 1.6 A resolution',
-    relatedIds: ['4HHB', '1MBO'],
+    relatedIds: ['4HHB'],
   ),
   ProteinModel(
     id: '1UBQ',
@@ -112,7 +112,7 @@ const List<ProteinModel> mockProteins = [
     releaseDate: '1987-04-16',
     authors: ['Vijay-Kumar, S.', 'Bugg, C.E.', 'Cook, W.J.'],
     citationTitle: 'Structure of ubiquitin refined at 1.8 A resolution',
-    relatedIds: ['1UBQ'],
+    relatedIds: [],
   ),
   ProteinModel(
     id: '1CRN',
@@ -128,7 +128,7 @@ const List<ProteinModel> mockProteins = [
     releaseDate: '1981-04-30',
     authors: ['Teeter, M.M.'],
     citationTitle: 'Water structure of a hydrophobic protein at atomic resolution',
-    relatedIds: ['1CRN', '3NIR'],
+    relatedIds: ['3NIR'],
   ),
   ProteinModel(
     id: '3NIR',
@@ -144,7 +144,7 @@ const List<ProteinModel> mockProteins = [
     releaseDate: '2008-07-29',
     authors: ['Schmidt, A.', 'Teeter, M.M.', 'Weckert, E.', 'Lamzin, V.S.'],
     citationTitle: 'Crystal structure of crambin at 0.48 A resolution',
-    relatedIds: ['1CRN', '3NIR'],
+    relatedIds: ['1CRN'],
   ),
   ProteinModel(
     id: '1ATP',
@@ -160,7 +160,7 @@ const List<ProteinModel> mockProteins = [
     releaseDate: '1993-01-20',
     authors: ['Knighton, D.R.', 'Zheng, J.H.', 'Ten Eyck, L.F.', 'Taylor, S.S.'],
     citationTitle: 'Crystal structure of the catalytic subunit of cAMP-dependent protein kinase',
-    relatedIds: ['1ATP'],
+    relatedIds: [],
   ),
   ProteinModel(
     id: '2POR',
@@ -176,7 +176,7 @@ const List<ProteinModel> mockProteins = [
     releaseDate: '1992-04-15',
     authors: ['Weiss, M.S.', 'Abele, U.', 'Weckesser, J.', 'Welte, W.', 'Schiltz, E.', 'Schulz, G.E.'],
     citationTitle: 'Molecular architecture and electrostatic properties of a bacterial porin',
-    relatedIds: ['2POR'],
+    relatedIds: [],
   ),
   ProteinModel(
     id: '5P21',
@@ -192,7 +192,7 @@ const List<ProteinModel> mockProteins = [
     releaseDate: '1990-09-17',
     authors: ['Pai, E.F.', 'Krengel, U.', 'Petsko, G.A.', 'Goody, R.S.', 'Kabsch, W.', 'Wittinghofer, A.'],
     citationTitle: 'Refined crystal structure of the triphosphate conformation of H-ras p21',
-    relatedIds: ['5P21'],
+    relatedIds: [],
   ),
   ProteinModel(
     id: '1AON',
@@ -208,7 +208,7 @@ const List<ProteinModel> mockProteins = [
     releaseDate: '1997-09-03',
     authors: ['Xu, Z.', 'Horwich, A.L.', 'Sigler, P.B.'],
     citationTitle: 'The crystal structure of the asymmetric GroEL-GroES-(ADP)7 chaperonin complex',
-    relatedIds: ['1AON'],
+    relatedIds: [],
   ),
   ProteinModel(
     id: '2CP4',
@@ -224,7 +224,7 @@ const List<ProteinModel> mockProteins = [
     releaseDate: '1988-02-15',
     authors: ['Poulos, T.L.', 'Finzel, B.C.', 'Howard, A.J.'],
     citationTitle: 'High-resolution crystal structure of cytochrome P450cam',
-    relatedIds: ['2CP4'],
+    relatedIds: [],
   ),
   ProteinModel(
     id: '1IGT',
@@ -240,7 +240,7 @@ const List<ProteinModel> mockProteins = [
     releaseDate: '1997-10-01',
     authors: ['Harris, L.J.', 'Larson, S.B.', 'Hasel, K.W.', 'McPherson, A.'],
     citationTitle: 'Refined structure of an intact IgG2a monoclonal antibody at 2.8 A resolution',
-    relatedIds: ['1IGT'],
+    relatedIds: [],
   ),
   ProteinModel(
     id: '1L2Y',
@@ -256,7 +256,7 @@ const List<ProteinModel> mockProteins = [
     releaseDate: '2002-04-29',
     authors: ['Neidigh, J.W.', 'Fesinmeyer, R.M.', 'Andersen, N.H.'],
     citationTitle: 'Designing a 20-residue protein',
-    relatedIds: ['1L2Y'],
+    relatedIds: [],
   ),
   ProteinModel(
     id: '3J3Q',
@@ -272,7 +272,7 @@ const List<ProteinModel> mockProteins = [
     releaseDate: '2013-05-22',
     authors: ['Fernandez, I.S.', 'Bai, X.C.', 'Murshudov, G.', 'Scheres, S.H.', 'Ramakrishnan, V.'],
     citationTitle: 'Initiation of translation in bacteria at 3.2 A resolution by cryo-EM',
-    relatedIds: ['3J3Q'],
+    relatedIds: [],
   ),
   ProteinModel(
     id: '7KRR',
@@ -288,7 +288,7 @@ const List<ProteinModel> mockProteins = [
     releaseDate: '2020-11-18',
     authors: ['Wrapp, D.', 'Wang, N.', 'Corbett, K.S.', 'McLellan, J.S.'],
     citationTitle: 'Cryo-EM structure of the 2019-nCoV spike in the prefusion conformation',
-    relatedIds: ['6LU7', '7KRR'],
+    relatedIds: ['6LU7'],
   ),
   ProteinModel(
     id: '1F88',
@@ -304,7 +304,7 @@ const List<ProteinModel> mockProteins = [
     releaseDate: '2000-08-04',
     authors: ['Palczewski, K.', 'Kumasaka, T.', 'Hori, T.', 'Behnke, C.A.', 'Motoshima, H.', 'Fox, B.A.'],
     citationTitle: 'Crystal structure of rhodopsin: A G protein-coupled receptor',
-    relatedIds: ['1F88'],
+    relatedIds: [],
   ),
   ProteinModel(
     id: '2HAC',
@@ -320,7 +320,7 @@ const List<ProteinModel> mockProteins = [
     releaseDate: '1981-05-18',
     authors: ['Wilson, I.A.', 'Skehel, J.J.', 'Wiley, D.C.'],
     citationTitle: 'Structure of the haemagglutinin membrane glycoprotein of influenza virus',
-    relatedIds: ['2HAC'],
+    relatedIds: [],
   ),
   ProteinModel(
     id: '1LYZ',
@@ -336,7 +336,7 @@ const List<ProteinModel> mockProteins = [
     releaseDate: '1974-06-17',
     authors: ['Diamond, R.'],
     citationTitle: 'Real-space refinement of the structure of hen egg-white lysozyme',
-    relatedIds: ['1LYZ'],
+    relatedIds: [],
   ),
   ProteinModel(
     id: '2HHB',
@@ -352,6 +352,6 @@ const List<ProteinModel> mockProteins = [
     releaseDate: '1984-12-05',
     authors: ['Fermi, G.', 'Perutz, M.F.'],
     citationTitle: 'Structure of human deoxyhaemoglobin refined at 1.74 A resolution',
-    relatedIds: ['4HHB', '1HHO', '2HHB'],
+    relatedIds: ['4HHB', '1HHO'],
   ),
 ];
