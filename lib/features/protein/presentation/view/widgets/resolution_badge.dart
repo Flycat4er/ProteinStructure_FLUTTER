@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:protein_structure/common/theme/app_colors.dart';
+import 'package:protein_structure/features/protein/presentation/utils/protein_format.dart';
 import 'package:protein_structure/l10n/app_localizations.dart';
 
 class ResolutionBadge extends StatelessWidget {
@@ -13,7 +13,7 @@ class ResolutionBadge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
-    final color = AppColors.colorForResolution(resolution);
+    final color = resolution.resolutionColor;
     final text = resolution != null
         ? l10n.resolutionFormat(resolution!.toStringAsFixed(2))
         : l10n.resolutionNa;
