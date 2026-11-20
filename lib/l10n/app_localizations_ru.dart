@@ -115,5 +115,22 @@ class AppLocalizationsRu extends AppLocalizations {
   String get errorLoad => 'Не удалось загрузить данные';
 
   @override
+  String get errorNoConnection => 'Нет связи с сервером. Проверьте интернет';
+
+  @override
+  String get errorTimeout => 'Сервер долго не отвечает';
+
+  @override
+  String get errorNotFound => 'Такой записи нет';
+
+  @override
+  String errorServer(String code) {
+    return 'Ошибка сервера ($code)';
+  }
+
+  @override
+  String get errorBadResponse => 'Сервер прислал непонятный ответ';
+
+  @override
   String get actionRetry => 'Повторить';
 }

@@ -1,6 +1,32 @@
 # Структуры белков — каталог макромолекул (Flutter)
 
-ЛР2 «Каркас». Список белковых структур с поиском, деталь со связанными записями («Связанные структуры»), светлая и тёмная тема, русский и английский интерфейс. Данные — 22 структуры из [RCSB Protein Data Bank](https://search.rcsb.org/), пока из моков.
+ЛР3 «Сеть». Замена моков из ЛР2 реальными данными из сети из [RCSB Protein Data Bank](https://search.rcsb.org/). Список структур с поиском и бесконечной пагинацией, деталь со связанными структурами (параллельная загрузка), обработка ошибок с кнопкой «Повторить», светлая и тёмная тема, русский и английский интерфейс.
+
+## Сеть вместо моков (ЛР3)
+
+Цепочка обязательна: **API-клиент → датасорс → репозиторий → Cubit или Bloc → экран.**
+
+| Слой / Файл | Что делает |
+|---|---|
+| `lib/common/network/dio_client.dart` | Создаёт и настраивает Dio: базовый адрес, таймауты, LogInterceptor в debug |
+| `lib/common/network/load_exception.dart` | `sealed class LoadException`: нет сети, таймаут, 404, ошибка сервера, некорректный ответ |
+| `lib/common/widgets/load_error_view.dart` | Унифицированный виджет ошибки с сообщением из ARB и кнопкой «Повторить» |
+| `lib/features/protein/data/dto/` | DTO на `json_serializable` (`protein_entry_dto`, `polymer_entity_dto`, `protein_search_response_dto`) и сгенерированные `*.g.dart` |
+| `lib/features/protein/data/api/protein_api.dart` | `ProteinApi`: один метод на один адрес сервера, возвращает DTO |
+| `lib/features/protein/data/data_sources/` | `IProteinDataSource` и `NetworkProteinDataSource`: вызывает API, ловит `DioException` и выбрасывает `LoadException` |
+| `lib/features/protein/data/mappers/protein_mapper.dart` | `ProteinEntryDtoMapper`: перевод DTO в доменную модель `ProteinModel` |
+| `lib/features/protein/data/protein_repository.dart` | `ProteinRepository`: получает DTO из датасорса, переводит в модели, грузит связанные записи параллельно через `Future.wait` |
+| `lib/app.dart` | Сборка всей цепочки зависимостей в корне приложения |
+
+### Запросы к RCSB Protein Data Bank API
+
+| Экран / Действие | Адрес и параметры | Описание |
+|---|---|---|
+| Список (страница) | `https://search.rcsb.org/rcsbsearch/v2/query?json=...` | Пагинация с `start` (offset) и `rows` (limit). Затем параллельно подгружаются метаданные записей |
+| Поиск | `https://search.rcsb.org/rcsbsearch/v2/query?json=...` | Полнотекстовый поиск (`service: "full_text"`), при отсутствии совпадений возвращается пустой список («Ничего не найдено») |
+| Деталь | `https://data.rcsb.org/rest/v1/core/entry/{id}` | Метаданные структуры: метод, разрешение, молекулярный вес, мономеры, дата, авторы, цитирование |
+| Полимерная сущность | `https://data.rcsb.org/rest/v1/core/polymer_entity/{id}/1` | Название белка и организм (`Homo sapiens` и др.) |
+| Связанные записи | `https://search.rcsb.org/rcsbsearch/v2/query` | Запрос записей из той же классификации, параллельная подгрузка через `Future.wait` |
 
 ## Запуск
 
@@ -10,7 +36,11 @@ flutter run -d edge        # или -d chrome
 flutter run -d windows
 ```
 
-`flutter pub get` генерирует код локализации из `lib/l10n/*.arb`, в git его нет.
+Перегенерация DTO при необходимости:
+
+```bash
+dart run build_runner build --delete-conflicting-outputs
+```
 
 ## Проверка ARB
 
@@ -20,10 +50,10 @@ dart run tool/check_arb.dart
 
 ## Устройство
 
-- `lib/features/protein/data` — репозиторий на моках
-- `lib/features/protein/domain` — модель и интерфейс репозитория
-- `lib/features/protein/presentation` — Cubit/Bloc, экраны, виджеты, форматирование
-- `lib/common` — навигация (go_router), тема, язык, общие виджеты
+- `lib/features/protein/data` — API-клиент, DTO, сетевой датасорс, мапперы и сетевой репозиторий
+- `lib/features/protein/domain` — модель `ProteinModel` и интерфейс `IProteinRepository`
+- `lib/features/protein/presentation` — Cubit списка (с пагинацией), Bloc детали, экраны, виджеты, форматирование
+- `lib/common` — сеть (`DioClient`, `LoadException`), общие виджеты (`LoadErrorView`, `AppScaffold`), навигация (go_router), тема, язык
 
 State manager — `flutter_bloc` (Cubit списка и Bloc детали с sealed-состояниями и событиями).
 

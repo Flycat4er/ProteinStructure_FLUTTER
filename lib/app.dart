@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:protein_structure/common/navigation/app_router.dart';
+import 'package:protein_structure/common/network/dio_client.dart';
 import 'package:protein_structure/common/theme/app_theme.dart';
 import 'package:protein_structure/common/theme/locale_cubit.dart';
 import 'package:protein_structure/common/theme/theme_cubit.dart';
+import 'package:protein_structure/features/protein/data/api/protein_api.dart';
+import 'package:protein_structure/features/protein/data/data_sources/network_protein_data_source.dart';
 import 'package:protein_structure/features/protein/data/protein_repository.dart';
 import 'package:protein_structure/features/protein/domain/i_protein_repository.dart';
 import 'package:protein_structure/features/protein/presentation/bloc/list/protein_list_cubit.dart';
@@ -19,7 +22,11 @@ class App extends StatelessWidget {
     return MultiRepositoryProvider(
       providers: [
         RepositoryProvider<IProteinRepository>(
-          create: (_) => const ProteinRepository(),
+          create: (_) => ProteinRepository(
+            NetworkProteinDataSource(
+              ProteinApi(DioClient.create()),
+            ),
+          ),
         ),
       ],
       child: MultiBlocProvider(

@@ -1,3 +1,4 @@
+import 'package:protein_structure/common/network/load_exception.dart';
 import 'package:protein_structure/features/protein/domain/protein_model.dart';
 
 sealed class ProteinDetailState {
@@ -25,8 +26,8 @@ final class ProteinDetailNotFound extends ProteinDetailState {
 }
 
 final class ProteinDetailFailure extends ProteinDetailState {
-  const ProteinDetailFailure(this.id, [this.error]);
+  const ProteinDetailFailure(this.id, this.error);
 
   final String id;
-  final Object? error;
+  final LoadException error;
 }
