@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:protein_structure/common/widgets/app_scaffold.dart';
+import 'package:protein_structure/common/widgets/load_error_view.dart';
 import 'package:protein_structure/features/protein/domain/i_protein_repository.dart';
 import 'package:protein_structure/features/protein/domain/protein_model.dart';
 import 'package:protein_structure/features/protein/presentation/bloc/detail/protein_detail_bloc.dart';
@@ -32,36 +33,22 @@ class ProteinDetailScreen extends StatelessWidget {
         body: BlocBuilder<ProteinDetailBloc, ProteinDetailState>(
           builder: (context, state) => switch (state) {
             ProteinDetailLoading() => const Center(
-              child: CircularProgressIndicator(),
-            ),
-            ProteinDetailNotFound(:final id) => Center(
-              child: Text(
-                AppLocalizations.of(context).detailNotFound(id),
-                style: Theme.of(context).textTheme.titleMedium,
+                child: CircularProgressIndicator(),
               ),
-            ),
-            ProteinDetailFailure(:final id) => Center(
-              child: Padding(
-                padding: const EdgeInsets.all(24),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      AppLocalizations.of(context).errorLoad,
-                      textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.titleMedium,
-                    ),
-                    const SizedBox(height: 16),
-                    FilledButton.tonal(
-                      onPressed: () => context.read<ProteinDetailBloc>().add(
-                            ProteinDetailRetried(id),
-                          ),
-                      child: Text(AppLocalizations.of(context).actionRetry),
-                    ),
-                  ],
+            ProteinDetailNotFound(:final id) => Center(
+                child: Text(
+                  AppLocalizations.of(context).detailNotFound(id),
+                  style: Theme.of(context).textTheme.titleMedium,
                 ),
               ),
-            ),
+            ProteinDetailFailure(:final id, :final error) => Center(
+                child: LoadErrorView(
+                  error: error,
+                  onRetry: () => context.read<ProteinDetailBloc>().add(
+                        ProteinDetailRetried(id),
+                      ),
+                ),
+              ),
             ProteinDetailLoaded(:final protein, :final related) =>
               _DetailContent(protein: protein, related: related),
           },
