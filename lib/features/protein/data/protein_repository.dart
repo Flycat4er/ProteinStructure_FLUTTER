@@ -1,43 +1,91 @@
-import 'package:protein_structure/features/protein/data/mock_proteins.dart';
+import 'dart:async';
+
+import 'package:protein_structure/features/protein/data/data_sources/i_protein_data_source.dart';
+import 'package:protein_structure/features/protein/data/dto/polymer_entity_dto.dart';
+import 'package:protein_structure/features/protein/data/mappers/protein_mapper.dart';
 import 'package:protein_structure/features/protein/domain/i_protein_repository.dart';
 import 'package:protein_structure/features/protein/domain/protein_model.dart';
 
 final class ProteinRepository implements IProteinRepository {
-  const ProteinRepository();
+  const ProteinRepository(this._dataSource);
+
+  final IProteinDataSource _dataSource;
 
   @override
-  Future<List<ProteinModel>> getProteins() async => mockProteins;
+  Future<List<ProteinModel>> getProteins({
+    required int offset,
+    required int limit,
+  }) async {
+    final response = await _dataSource.search(offset: offset, limit: limit);
+    final ids = [for (final item in response.resultSet) item.identifier];
+    if (ids.isEmpty) return const [];
+    return _loadAll(ids);
+  }
 
   @override
-  Future<ProteinModel?> getProtein(String id) async {
-    final target = id.trim().toUpperCase();
-    for (final protein in mockProteins) {
-      if (protein.id.toUpperCase() == target) return protein;
+  Future<ProteinModel> getProtein(String id) =>
+      _loadProtein(id, includeRelated: true);
+
+  @override
+  Future<List<ProteinModel>> searchProteins(
+    String query, {
+    int offset = 0,
+    int limit = 10,
+  }) async {
+    final response = await _dataSource.search(
+      query: query,
+      offset: offset,
+      limit: limit,
+    );
+    final ids = [for (final item in response.resultSet) item.identifier];
+    if (ids.isEmpty) return const [];
+    return _loadAll(ids);
+  }
+
+  @override
+  Future<List<ProteinModel>> getProteinsByIds(List<String> ids) =>
+      _loadAll(ids);
+
+  Future<List<ProteinModel>> _loadAll(Iterable<String> ids) async {
+    final models = await Future.wait([
+      for (final id in ids) _loadProtein(id),
+    ]);
+    return models;
+  }
+
+  Future<ProteinModel> _loadProtein(
+    String id, {
+    bool includeRelated = false,
+  }) async {
+    final entry = await _dataSource.getEntry(id);
+
+    PolymerEntityDto? polymer;
+    try {
+      polymer = await _dataSource.getPolymerEntity(id);
+    } catch (_) {}
+
+    var relatedIds = const <String>[];
+    if (includeRelated) {
+      final keyword = entry.structKeywords?.pdbxKeywords?.trim();
+      if (keyword != null && keyword.isNotEmpty) {
+        try {
+          final relResponse = await _dataSource.search(
+            query: keyword,
+            offset: 0,
+            limit: 6,
+          );
+          final target = id.toUpperCase();
+          relatedIds = [
+            for (final item in relResponse.resultSet)
+              if (item.identifier.toUpperCase() != target) item.identifier,
+          ].take(3).toList();
+        } catch (_) {}
+      }
     }
-    return null;
-  }
 
-  @override
-  Future<List<ProteinModel>> searchProteins(String query) async {
-    final needle = query.trim().toLowerCase();
-    if (needle.isEmpty) return mockProteins;
-    return [
-      for (final protein in mockProteins)
-        if (protein.id.toLowerCase().contains(needle) ||
-            protein.shortName.toLowerCase().contains(needle) ||
-            protein.title.toLowerCase().contains(needle) ||
-            protein.organism.toLowerCase().contains(needle) ||
-            protein.classification.toLowerCase().contains(needle))
-          protein,
-    ];
-  }
-
-  @override
-  Future<List<ProteinModel>> getProteinsByIds(List<String> ids) async {
-    final idSet = ids.map((e) => e.toUpperCase()).toSet();
-    return [
-      for (final protein in mockProteins)
-        if (idSet.contains(protein.id.toUpperCase())) protein,
-    ];
+    return entry.toModel(
+      polymer: polymer,
+      relatedIds: relatedIds,
+    );
   }
 }
