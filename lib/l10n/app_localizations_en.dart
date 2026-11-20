@@ -114,5 +114,23 @@ class AppLocalizationsEn extends AppLocalizations {
   String get errorLoad => 'Failed to load data';
 
   @override
+  String get errorNoConnection =>
+      'No connection to server. Check your internet';
+
+  @override
+  String get errorTimeout => 'Server took too long to respond';
+
+  @override
+  String get errorNotFound => 'Record not found';
+
+  @override
+  String errorServer(String code) {
+    return 'Server error ($code)';
+  }
+
+  @override
+  String get errorBadResponse => 'Server returned unexpected response';
+
+  @override
   String get actionRetry => 'Retry';
 }

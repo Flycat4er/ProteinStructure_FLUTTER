@@ -32,5 +32,17 @@
   "methodNeutron": "Neutron Diffraction",
   "methodOther": "Other Method",
   "errorLoad": "Failed to load data",
+  "errorNoConnection": "No connection to server. Check your internet",
+  "errorTimeout": "Server took too long to respond",
+  "errorNotFound": "Record not found",
+  "errorServer": "Server error ({code})",
+  "@errorServer": {
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "errorBadResponse": "Server returned unexpected response",
   "actionRetry": "Retry"
 }

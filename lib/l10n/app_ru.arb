@@ -67,5 +67,17 @@
   "methodNeutron": "Нейтронография",
   "methodOther": "Другой метод",
   "errorLoad": "Не удалось загрузить данные",
+  "errorNoConnection": "Нет связи с сервером. Проверьте интернет",
+  "errorTimeout": "Сервер долго не отвечает",
+  "errorNotFound": "Такой записи нет",
+  "errorServer": "Ошибка сервера ({code})",
+  "@errorServer": {
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "errorBadResponse": "Сервер прислал непонятный ответ",
   "actionRetry": "Повторить"
 }
